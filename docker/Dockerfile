@@ -1,5 +1,14 @@
 FROM nvidia/cuda:13.2.0-cudnn-devel-ubuntu24.04
 
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# 兼容pip调用，可选
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
+
 RUN pip install scikit-learn tensorflow-gpu scipy numpy progressbar2
 
 # if the version of scikit-learn is not compatible, upgrade it by:
