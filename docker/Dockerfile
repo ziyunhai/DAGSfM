@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:13.2.0-cudnn-devel-ubuntu24.04
 
 RUN pip install scikit-learn tensorflow-gpu==1.7.0 scipy numpy progressbar2
 
