@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get -y install \
   libatlas-base-dev \
   libsuitesparse-dev
-RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0
+RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 2.2.0
 RUN cd ceres-solver && \
   mkdir build && \
   cd build && \
