@@ -42,7 +42,7 @@ RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 2.2.0
 RUN cd ceres-solver && \
   mkdir build && \
   cd build && \
-  cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF && \
+  cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF  -DCERES_ENABLE_CUDA=OFF && \
   make -j4 && \
   make install
 
