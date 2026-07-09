@@ -1,6 +1,6 @@
 FROM nvidia/cuda:13.2.0-cudnn-devel-ubuntu24.04
 
-RUN pip install scikit-learn tensorflow-gpu==1.7.0 scipy numpy progressbar2
+RUN pip install scikit-learn tensorflow-gpu scipy numpy progressbar2
 
 # if the version of scikit-learn is not compatible, upgrade it by:
 # pip install --upgrade scikit-learn
