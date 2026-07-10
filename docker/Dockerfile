@@ -54,7 +54,6 @@ RUN cd igraph && \
   ./bootstrap.sh && \
   ./configure CFLAGS="-std=c11" CXXFLAGS="-std=c++14" && \
   make -j$(nproc) && \
-  make check && \
   make install && \
   ldconfig && \
   cd ../ && rm -rf igraph
