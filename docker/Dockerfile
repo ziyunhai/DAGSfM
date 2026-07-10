@@ -81,7 +81,7 @@ RUN cd DAGSfM && \
   mkdir build && \
   cd build && \
   cmake .. -DBUILD_TESTING=OFF && \
-  make -j4 && \
+  make -j1 && \
   make install && \
   ldconfig && \
   cd ../.. && rm -rf DAGSfM
