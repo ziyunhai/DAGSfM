@@ -49,11 +49,15 @@ RUN cd ceres-solver && \
 # Build and install igraph
 RUN apt-get install -y libxml2-dev wget autoconf automake libtool && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/igraph/igraph.git --branch 0.7.1
+
 RUN cd igraph && \
-  ./configure && \
-  make && \
+  ./bootstrap.sh && \
+  ./configure CFLAGS="-std=c11" CXXFLAGS="-std=c++14" && \
+  make -j$(nproc) && \
   make check && \
-  make install
+  make install && \
+  ldconfig && \
+  cd ../ && rm -rf igraph
 
 # Build and install rpclib
 RUN git clone https://github.com/AIBluefisher/rpclib.git && \
