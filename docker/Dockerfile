@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --break-system-packages scikit-learn tensorflow scipy numpy progressbar2
+RUN pip3 install --upgrade pip && pip3 install --break-system-packages scikit-learn tensorflow scipy numpy progressbar2
 
 # if the version of scikit-learn is not compatible, upgrade it by:
 # pip install --upgrade scikit-learn
