@@ -80,7 +80,7 @@ RUN cd DAGSfM && \
   git checkout dev && \
   mkdir build && \
   cd build && \
-  cmake .. -DBUILD_TESTING=OFF && \
+  cmake .. -DBUILD_TESTING=OFF -DCMAKE_CUDA_ARCHITECTURES="35;50;52;60;61;70;75;80;86" && \
   make -j1 && \
   make install && \
   ldconfig && \
