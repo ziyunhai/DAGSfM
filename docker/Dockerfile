@@ -47,7 +47,7 @@ RUN cd ceres-solver && \
   make install
 
 # Build and install igraph
-RUN apt-get install -y libxml2-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y libxml2-dev wget && rm -rf /var/lib/apt/lists/*
 RUN wget https://igraph.org/nightly/get/c/igraph-0.7.1.tar.gz && \
   tar -xvf igraph-0.7.1.tar.gz && \
   cd igraph-0.7.1 && \
