@@ -79,6 +79,8 @@ RUN cd DAGSfM && \
   git checkout dev && \
   mkdir build && \
   cd build && \
-  cmake .. && \
+  cmake .. -DBUILD_TESTING=OFF && \
   make -j4 && \
-  make install
+  make install && \
+  ldconfig && \
+  cd ../.. && rm -rf DAGSfM
