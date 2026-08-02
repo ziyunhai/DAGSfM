@@ -116,6 +116,8 @@ RUN git clone https://github.com/AIBluefisher/rpclib.git --depth 1 && \
 RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
     cd DAGSfM && \
     git checkout dev && \
+    # 修复核心编译二义性错误
+    sed -i 's/server_ = std::make_unique<rpc::server>(port);/server_ = std::make_unique<rpc::server>(static_cast<int>(port));/' src/map_reduce/worker.h && \
     mkdir build && cd build && \
     CC=gcc-7 CXX=g++-7 cmake .. \
         -DBUILD_TESTING=OFF \
@@ -123,8 +125,9 @@ RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS="-fpermissive" \
-        -DCUDA_ARCHS="3.5;5.0;5.2;6.0;6.1;7.0;7.5;8.0;8.6" && \
-    make -j8 && \
+        -DCUDA_ARCHS="Maxwell;Pascal;Volta;Turing;Ampere" \
+        -DCUDA_NVCC_FLAGS="-Wno-deprecated-declarations" && \
+    make -j$(nproc) && \
     make install && \
     ldconfig && \
     cd ../.. && rm -rf DAGSfM
