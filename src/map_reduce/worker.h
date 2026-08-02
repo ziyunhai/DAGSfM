@@ -43,12 +43,15 @@
 #include "map_reduce/running_info.h"
 #include "util/misc.h"
 
+// ======== 关键改动：注释整段侵入std命名空间的自定义make_unique ========
+/*
 namespace std {
 template <typename T, typename... Ts>
 std::unique_ptr<T> make_unique(Ts&&... params) {
   return std::unique_ptr<T>(new T(std::forward<Ts>(params)...));
 }
 }  // namespace std
+*/
 
 namespace DAGSfM {
 
