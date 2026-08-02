@@ -63,7 +63,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcgal-qt5-dev \
     libxml2-dev \
     libomp-dev \
-    autoconf automake libtool flex bison gcc-7 g++-7\
+    autoconf automake libtool flex bison gcc-7 g++-7 \
     libgtest-dev \
     && rm -rf /var/lib/apt/lists/*
 
