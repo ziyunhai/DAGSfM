@@ -119,6 +119,7 @@ RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
     mkdir build && cd build && \
     cmake .. \
         -DBUILD_TESTING=OFF \
+        -DBUILD_TESTS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CUDA_ARCHITECTURES="35;50;52;60;61;70;75;80;86" \
         -DCMAKE_CUDA_FLAGS="-gencode=arch=compute_35,code=sm_35 -gencode=arch=compute_50,code=sm_50 -gencode=arch=compute_52,code=sm_52 -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_61,code=sm_61 -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -gencode=arch=compute_80,code=sm_80 -gencode=arch=compute_86,code=sm_86" && \
