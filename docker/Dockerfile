@@ -123,7 +123,7 @@ RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS="-fpermissive" \
-        -DCUDA_ARCHS="35;50;52;60;61;70;75;80;86" && \
+        -DCUDA_ARCHS="3.5;5.0;5.2;6.0;6.1;7.0;7.5;8.0;8.6" && \
     make -j8 && \
     make install && \
     ldconfig && \
