@@ -63,7 +63,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcgal-qt5-dev \
     libxml2-dev \
     libomp-dev \
-    autoconf automake libtool flex bison \
+    autoconf automake libtool flex bison gcc-7 g++-7\
     libgtest-dev \
     && rm -rf /var/lib/apt/lists/*
 
@@ -73,7 +73,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0 --depth 1 && \
     cd ceres-solver && \
     mkdir build && cd build && \
-    cmake .. \
+    CC=gcc-7 CXX=g++-7 cmake .. \
         -DBUILD_TESTING=OFF \
         -DBUILD_EXAMPLES=OFF \
         -DCMAKE_BUILD_TYPE=Release && \
@@ -88,7 +88,7 @@ RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0 -
 RUN git clone -b 0.7.1 https://github.com/igraph/igraph.git igraph-0.7.1 --depth 1 && \
     cd igraph-0.7.1 && \
     ./bootstrap.sh && \
-    ./configure --prefix=/usr/local && \
+    CC=gcc-7 CXX=g++-7 ./configure --prefix=/usr/local && \
     make -j$(nproc) && \
     make install && \
     ldconfig && \
@@ -100,7 +100,7 @@ RUN git clone -b 0.7.1 https://github.com/igraph/igraph.git igraph-0.7.1 --depth
 RUN git clone https://github.com/AIBluefisher/rpclib.git --depth 1 && \
     cd rpclib && \
     mkdir build && cd build && \
-    cmake .. \
+    CC=gcc-7 CXX=g++-7 cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DRPCLIB_BUILD_TESTS=OFF && \
     make -j$(nproc) && \
@@ -117,10 +117,12 @@ RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
     cd DAGSfM && \
     git checkout dev && \
     mkdir build && cd build && \
-    cmake .. \
+    CC=gcc-7 CXX=g++-7 cmake .. \
         -DBUILD_TESTING=OFF \
         -DBUILD_TESTS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_CXX_STANDARD=14 \
+        -DCMAKE_CXX_FLAGS="-fpermissive" \
         -DCMAKE_CUDA_ARCHITECTURES="35;50;52;60;61;70;75;80;86" \
         -DCMAKE_CUDA_FLAGS="-gencode=arch=compute_35,code=sm_35 -gencode=arch=compute_50,code=sm_50 -gencode=arch=compute_52,code=sm_52 -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_61,code=sm_61 -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -gencode=arch=compute_80,code=sm_80 -gencode=arch=compute_86,code=sm_86" && \
     make -j$(nproc) && \
