@@ -83,14 +83,14 @@ RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0 -
 # ============================================================
 # igraph 0.7.1
 # ============================================================
-RUN wget -q https://igraph.org/nightly/get/c/igraph-0.7.1.tar.gz && \
-    tar -xf igraph-0.7.1.tar.gz && \
+RUN git clone https://github.com/igraph/igraph.git --tag 0.7.1 --depth 1 igraph-0.7.1 && \
     cd igraph-0.7.1 && \
+    ./bootstrap.sh && \
     ./configure --prefix=/usr/local && \
     make -j$(nproc) && \
     make install && \
     ldconfig && \
-    cd .. && rm -rf igraph-0.7.1 igraph-0.7.1.tar.gz
+    cd .. && rm -rf igraph-0.7.1
 
 # ============================================================
 # rpclib
