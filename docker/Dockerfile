@@ -124,7 +124,7 @@ RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS="-fpermissive" \
-        -DCUDA_ARCHS="Maxwell;Pascal;Volta;Turing;Ampere" \
+        -DCUDA_ARCHS="3.5;5.0;5.2;6.0;6.1;7.0;7.5;8.0;8.6" \
         -DCUDA_NVCC_FLAGS="-Wno-deprecated-declarations" && \
     make -j$(nproc) && \
     make install && \
