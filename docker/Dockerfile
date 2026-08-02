@@ -63,6 +63,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcgal-qt5-dev \
     libxml2-dev \
     libomp-dev \
+    autoconf automake libtool flex bison \
     && rm -rf /var/lib/apt/lists/*
 
 # ============================================================
@@ -83,14 +84,14 @@ RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0 -
 # ============================================================
 # igraph 0.7.1
 # ============================================================
-RUN git clone https://github.com/igraph/igraph.git --tag 0.7.1 --depth 1 igraph-0.7.1 && \
+RUN git clone -b 0.7.1 https://github.com/igraph/igraph.git igraph-0.7.1 --depth 1 && \
     cd igraph-0.7.1 && \
     ./bootstrap.sh && \
     ./configure --prefix=/usr/local && \
     make -j$(nproc) && \
     make install && \
     ldconfig && \
-    cd .. && rm -rf igraph-0.7.1
+    cd ../.. && rm -rf igraph-0.7.1
 
 # ============================================================
 # rpclib
