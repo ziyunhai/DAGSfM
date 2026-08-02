@@ -113,7 +113,7 @@ RUN git clone https://github.com/AIBluefisher/rpclib.git --depth 1 && \
 # CUDA 11.8 已彻底移除对 sm_30/compute_30 的支持
 # 必须显式指定合法算力架构，否则 PBA 模块编译会失败
 # ============================================================
-RUN git clone https://github.com/AIBluefisher/DAGSfM.git && \
+RUN git clone https://github.com/ziyunhai/DAGSfM.git && \
     cd DAGSfM && \
     git checkout dev && \
     mkdir build && cd build && \
