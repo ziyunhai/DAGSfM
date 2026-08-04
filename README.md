@@ -244,6 +244,9 @@ limit the image number of each small map, and use this parameter to segment larg
 
 ## ChangeLog
 
+- 2026.08.04
+  - Dockerfile 升级基础镜像
+    
 - 2020.12.05
   - OpenMP for DAGSfM when running in sequential mode. This can be faster as one partition
     always cannot have an 100% CPU occupation (usually 40% ~ 60%). And the acceleration
